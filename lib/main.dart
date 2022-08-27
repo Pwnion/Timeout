@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timeout/settings.dart';
 import 'package:timeout/times.dart';
 
 
@@ -20,7 +21,7 @@ class _AppState extends State<App> {
         debugShowCheckedModeBanner: false,
         title: 'Timeout',
         home: Scaffold(
-          body: Times(),
+          body: Settings(),
         )
     );
   }
