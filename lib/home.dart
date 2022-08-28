@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
                     );
                   },
                   onLongPress: () =>
-                      InstalledApps.openSettings(app.packageName!),
+                    InstalledApps.openSettings(app.packageName!),
                 ),
               );
             },
