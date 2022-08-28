@@ -1,33 +1,16 @@
-import 'dart:typed_data';
-
-import 'package:flutter/material.dart';
-import 'package:timeout/main.dart';
 import 'package:flutter/material.dart';
 import 'package:installed_apps/app_info.dart';
 import 'package:installed_apps/installed_apps.dart';
+import 'package:timeout/times.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
-
 }
 
 class _HomeState extends State<Home> {
-
-
-  // Future<List<AppInfo>> getApps() async{
-  //   // Returns a list of only those apps that have launch intent
-  //   List<AppInfo> apps = await InstalledApps.getInstalledApps(true, true);
-  //   //
-  //   // for (AppInfo a in apps) {
-  //   //   print(a.name);
-  //   // }
-  //
-  //   return apps;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<AppInfo>>(
@@ -45,17 +28,31 @@ class _HomeState extends State<Home> {
                     child: Image.memory(app.icon!),
                   ),
                   title: Text(app.name!),
-                  onTap: () =>
-                      InstalledApps.startApp(app.packageName!),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Times(
+                        times: const [
+                          1, 5, 10, 30
+                        ],
+                        packageName: app.packageName!
+                      )),
+                    );
+                  },
                   onLongPress: () =>
                       InstalledApps.openSettings(app.packageName!),
                 ),
               );
             },
-          ) : Center(
+          ) : const Center(
               child: Text(
-                  "Error occurred while getting installed apps ...."))
-              : Center(child: Text("Getting installed apps ...",));
+                "Error occurred while getting installed apps ...."
+              )
+          ) : const Center(
+                child: Text(
+                "Getting installed apps ...",
+              )
+          );
         }
     );
   }

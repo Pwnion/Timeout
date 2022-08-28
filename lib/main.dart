@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:timeout/settings.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
-import 'package:timeout/times.dart';
 import 'dart:io';
+
+import 'home.dart';
 
 
 void main() {
@@ -41,14 +41,7 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Timeout',
       home: Scaffold(
-        body: Times(
-          times: [
-            1,
-            5,
-            10,
-            30
-          ]
-        ),
+        body: Home()
       )
     );
   }

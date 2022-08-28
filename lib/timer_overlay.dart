@@ -20,8 +20,8 @@ class TimerOverlay extends StatefulWidget {
 
   const TimerOverlay(
     {
-        Key? key,
-        required this.time
+      Key? key,
+      required this.time
     }
   ) : super(key: key);
 
@@ -32,6 +32,8 @@ class TimerOverlay extends StatefulWidget {
 class _TimerOverlayState extends State<TimerOverlay> {
   @override
   Widget build(BuildContext context) {
-    return const Text('Hello World');
+    return Container(
+      color: Colors.red,
+    );
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
+import 'package:installed_apps/installed_apps.dart';
+import 'package:timeout/timer_overlay.dart';
 
 class Times extends StatefulWidget {
   final List<int> times;
@@ -28,8 +31,13 @@ class _TimesState extends State<Times> {
               vertical: 10
             ),
             child: ElevatedButton(
-              onPressed: () {
-
+              onPressed: () async {
+                InstalledApps.startApp(widget.packageName);
+                await FlutterOverlayWindow.showOverlay(
+                  enableDrag: true,
+                  height: 100,
+                  width: 100
+                );
               },
               child: SizedBox(
                 width: 100,
