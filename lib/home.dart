@@ -4,7 +4,9 @@ import 'package:installed_apps/installed_apps.dart';
 import 'package:timeout/times.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final bool mainScreen;
+  final String bannedApp = "AMdroid";
+  const Home({Key? key, required this.mainScreen}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -22,6 +24,9 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, index) {
               AppInfo app = snapshot.data![index];
               return Card(
+                color: app.name == widget.bannedApp ?
+                  widget.mainScreen == true ? Colors.grey : null
+                  : null,
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.transparent,
@@ -29,15 +34,18 @@ class _HomeState extends State<Home> {
                   ),
                   title: Text(app.name!),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Times(
-                        times: const [
-                          1, 5, 10, 30
-                        ],
-                        packageName: app.packageName!
-                      )),
-                    );
+                    widget.mainScreen == true ?
+                      app.name != widget.bannedApp ?
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Times(
+                              times: const [
+                                1, 5, 10, 30
+                              ],
+                              packageName: app.packageName!
+                          )),
+                        ) : {}
+                    : Navigator.pop(context, app.packageName!);
                   },
                   onLongPress: () =>
                     InstalledApps.openSettings(app.packageName!),
@@ -46,10 +54,10 @@ class _HomeState extends State<Home> {
             },
           ) : const Center(
               child: Text(
-                "Error occurred while getting installed apps ...."
+                  "Error occurred while getting installed apps ...."
               )
           ) : const Center(
-                child: Text(
+              child: Text(
                 "Getting installed apps ...",
               )
           );

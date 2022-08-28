@@ -3,6 +3,8 @@ import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:timeout/settings.dart';
 import 'package:timeout/timer_overlay.dart';
 import 'dart:io';
+import 'package:timeout/group.dart';
+import 'package:timeout/home.dart';
 import 'home.dart';
 
 
@@ -56,7 +58,7 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Timeout',
       home: Scaffold(
-        body: Settings()
+        body: Group(),
       )
     );
   }
