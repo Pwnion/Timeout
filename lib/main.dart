@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:timeout/settings.dart';
+import 'package:timeout/timer_overlay.dart';
 import 'dart:io';
-
 import 'home.dart';
 
+
+@pragma("vm:entry-point")
+void overlayMain() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Material(
+        child: TimerOverlay(
+          time: 5
+        )
+      )
+    )
+  );
+}
 
 void main() {
   runApp(const App());
