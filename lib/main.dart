@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
+import 'package:timeout/settings.dart';
 import 'dart:io';
 
 import 'home.dart';
