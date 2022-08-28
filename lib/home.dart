@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                     : Navigator.pop(context, app.packageName!);
                   },
                   onLongPress: () =>
-                      InstalledApps.openSettings(app.packageName!),
+                    InstalledApps.openSettings(app.packageName!),
                 ),
               );
             },
