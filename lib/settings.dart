@@ -14,25 +14,19 @@ class _SettingsState extends State<Settings> {
       children: [
         ElevatedButton(
         onPressed: () {},
-          child: _tile('Time Options', 'Edit your Time Options', Icons.theaters),
+          child: _tile('Time Options', 'Edit your Time Options', Icons.access_alarm),
         ),
         const Divider(),
         ElevatedButton(
         onPressed: () {},
-        child: _tile('Cooldown', 'Edit your Cooldown', Icons.theaters),
+        child: _tile('Cooldown', 'Edit your Cooldown', Icons.access_time_filled_rounded),
         ),
         const Divider(),
         ElevatedButton(
           onPressed: () {},
-          child: _tile('Groups', 'Edit your Groups', Icons.theaters),
+          child: _tile('Groups', 'Edit your Groups', Icons.group_work),
 
         ),
-        const Divider(),
-        ElevatedButton(
-          onPressed: () {},
-          child: _tile('Time Options', 'Edit your Time Options', Icons.theaters),
-
-        )
       ],
     );
   }
@@ -52,7 +46,7 @@ class _SettingsState extends State<Settings> {
       ),
       leading: Icon(
         icon,
-        color: Colors.white10,
+        color: Colors.white,
       ),
     );
   }

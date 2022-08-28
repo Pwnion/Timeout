@@ -42,7 +42,7 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Timeout',
       home: Scaffold(
-        body: Home()
+        body: Settings()
       )
     );
   }
