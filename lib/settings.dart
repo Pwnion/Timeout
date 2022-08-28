@@ -10,57 +10,44 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(
-            left: 50,
-            right: 50,
-            top : 30
+    return ListView(
+      children: [
+        ElevatedButton(
+        onPressed: () {},
+          child: _tile('Time Options', 'Edit your Time Options', Icons.access_alarm),
         ),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Hello'),
-                ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Test'))
-              ]
-          ),
-      ),
+        const Divider(),
+        ElevatedButton(
+        onPressed: () {},
+        child: _tile('Cooldown', 'Edit your Cooldown', Icons.access_time_filled_rounded),
+        ),
+        const Divider(),
+        ElevatedButton(
+          onPressed: () {},
+          child: _tile('Groups', 'Edit your Groups', Icons.group_work),
 
-      Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 50,
-          vertical: 30
         ),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Hello'),
-              ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Test'))
-            ]
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 50,
-          vertical: 30
-        ),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Hello'),
-              ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Test'))
-            ]
-        ),
-      ),
+      ],
+    );
+  }
 
-        ]
+  ListTile _tile(String title, String subtitle, IconData icon) {
+    return ListTile(
+      title: Text(title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 30,
+            color: Colors.white
+          )),
+      subtitle: Text(subtitle,
+            style: const TextStyle(
+                color: Colors.white
+            )
+      ),
+      leading: Icon(
+        icon,
+        color: Colors.white,
+      ),
     );
   }
 }
