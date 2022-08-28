@@ -13,7 +13,7 @@ class Group extends StatefulWidget {
 }
 
 class _GroupState extends State<Group> {
-  Uint8List? icon;
+  List<Uint8List?> icon_list = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,8 @@ class _GroupState extends State<Group> {
                       child: Wrap(
                       spacing: 30,
                       alignment: WrapAlignment.center,
-                      children: [ icon == null ? const Text("") : Image.memory(icon!, width: 75, height: 75,), ]
+                      children: List.generate(icon_list.length!, (index) =>
+                        icon_list[index] == null ? const Text("") : Image.memory(icon_list[index]!, width: 75, height: 75,))
                         ),
                   )
               ),
@@ -75,7 +76,7 @@ class _GroupState extends State<Group> {
                           )
                       );
                       AppInfo app = await InstalledApps.getAppInfo(packageName);
-                      setState(() { icon = app.icon!; });
+                      setState(() { icon_list.add(app.icon!); });
                 },
                 ),
               )
